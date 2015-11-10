@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Module id="${project.name}" class="org.modelio.juniper.ide.impl.JuniperIDEModule" binaryversion="3.3.00.9023" version="${project.version}.${buildNumber}.9023" schema-level="2" uid="df63bbce-45dd-4288-92b3-280b81fc00a8">
+    <ClassPath>
+        <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/commons-lang3-3.1.jar"/>
+        <PathEntry path="lib/audit4modules-0.1.27.jar"/>
+    </ClassPath>
+    <Profiles>
+        <Profile uid="bf076a95-21ad-44fe-8c2b-e5fc31017d66" id="Juniper Top-level Profile">
+            <Stereotype name="RootPackage" metaclass="Package" is-hidden="false" label="RootPackage" uid="1183550f-4f83-4264-a08c-1f27861fbf63"/>
+            <Stereotype name="JUNIPERModel" metaclass="Package" is-hidden="false" label="JUNIPERModel" uid="fe1c2fc9-f3ec-4d46-b573-eb86e80f4fa4">
+                <Icon path="res/icons/juniper_icon_16.png"/>
+            </Stereotype>
+            <Stereotype name="BigDataSystem" metaclass="Component" is-hidden="false" label="BigDataSystem" uid="dfb30000-d0c7-472e-9250-1afedf5ebe2d">
+                <Icon path="res/icons/bdata_system.png"/>
+            </Stereotype>
+            <Stereotype name="Interface" metaclass="Package" is-hidden="false" label="Interface" uid="387cc593-f49b-439f-bf0e-2748874f36b3"/>
+            <Stereotype name="Behavior" metaclass="Package" is-hidden="false" label="Behavior" uid="b23620b2-d74d-4e93-9190-a6ac64a2cdae"/>
+            <Stereotype name="Structure" metaclass="Package" is-hidden="false" label="Structure" uid="ad610c58-8df6-4d0c-9420-523b83ad1458"/>
+            <Stereotype name="Static" metaclass="Package" is-hidden="false" label="Static" uid="e9f6f042-b1f8-47ae-b04f-b1c8c646395f"/>
+            <Stereotype name="Dynamic" metaclass="Package" is-hidden="false" label="Dynamic" uid="50efc79d-f444-4a2a-a46b-3f14a3373cf0"/>
+        </Profile>
+        <Profile uid="60ce2a3a-c179-4676-9407-0437ae9a7ba5" id="Big Data Processing Profile">
+            <Stereotype name="cross" metaclass="OpaqueAction" is-hidden="false" label="cross" uid="7432256e-f1ba-4b36-8dde-614836c2ed7f">
+                <TagTypes>
+                    <TagType name="partitioner" uid="42144541-2117-4bfc-a4e4-9c094c19e662" label="partitioner" is-hidden="false"/>
+                    <TagType name="parallel" uid="56b14ab5-02f8-4eea-8c3a-777a43d8aa84" label="parallel" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="distinct" metaclass="OpaqueAction" is-hidden="false" label="distinct" uid="c8aaa971-470d-4aaf-90d0-efa9c7c80246">
+                <TagTypes>
+                    <TagType name="partitioner" uid="ebcc81af-9d59-499c-914e-0a71c05ea0a6" label="partitioner" is-hidden="false"/>
+                    <TagType name="parallel" uid="a36c9bb3-7e4b-41b9-9725-aaf13aaeb774" label="parallel" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="filter" metaclass="OpaqueAction" is-hidden="false" label="filter" uid="d6061f6a-3166-4dc5-a2db-c6857d20c150">
+                <TagTypes>
+                    <TagType name="by" uid="afabf31c-097b-46b4-ace7-1fd1d2f43710" label="by" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="generate" metaclass="OpaqueAction" is-hidden="false" label="generate" uid="1a1d96a9-de3e-40e0-bc00-27b40ddde250">
+                <NoteTypes>
+                    <NoteType name="expression" label="expression" is-hidden="false" uid="32725d7d-5f36-4d9a-bea4-bf5c49b23928"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="group" metaclass="OpaqueAction" is-hidden="false" label="group" uid="ede1252a-41d4-4dcb-8b0a-1a6d861db06c">
+                <TagTypes>
+                    <TagType name="partitioner" uid="65b791b9-fee4-4ae9-be74-96b9250aa0f1" label="partitioner" is-hidden="false"/>
+                    <TagType name="parallel" uid="b05786af-931d-4e5e-8e45-a75d0304fdff" label="parallel" is-hidden="false"/>
+                    <TagType name="using" uid="0aa6408d-5560-4315-a289-017cd0dfe3f5" label="using" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="group-by" metaclass="ObjectFlow" is-hidden="false" label="group-by" uid="ba96dca1-5e00-46e7-8df8-c7547f70a412">
+                <NoteTypes>
+                    <NoteType name="by" label="by" is-hidden="false" uid="9f00a448-fbd7-4b74-b494-c3288c5a1806"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="inner-join" metaclass="OpaqueAction" is-hidden="false" label="inner-join" uid="4509e190-3cd0-497f-bcf9-46147a9d3f0d">
+                <TagTypes>
+                    <TagType name="partitioner" uid="7158a638-c867-4b9b-a4d0-971b86ee1831" label="partitioner" is-hidden="false"/>
+                    <TagType name="parallel" uid="268443a3-eefe-4662-b9df-da37c45c8f6d" label="parallel" is-hidden="false"/>
+                    <TagType name="using" uid="1763eca2-656e-46f5-893e-546b16df1396" label="using" is-hidden="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="by" label="by" is-hidden="false" uid="bbec9888-8a7c-41a0-b83a-2c26a5e00a42"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="outer-join" metaclass="OpaqueAction" is-hidden="false" label="outer-join" uid="c0b09c2a-a278-4511-96d3-3e09f9500d61">
+                <TagTypes>
+                    <TagType name="partitioner" uid="962d71ae-fe52-4c71-a916-08e79a0ab57c" label="partitioner" is-hidden="false"/>
+                    <TagType name="parallel" uid="4ff2a4ad-cbf1-44d3-ac7c-576785bf3bae" label="parallel" is-hidden="false"/>
+                    <TagType name="typeSide" uid="4ffbc67f-335e-4ee7-8a38-a6a48def4fae" label="typeSide" is-hidden="false"/>
+                    <TagType name="typeMode" uid="8cfe4a8f-26d7-4a57-b033-e075f424ab0f" label="typeMode" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="left-outer-join" metaclass="ObjectFlow" is-hidden="false" label="left-outer-join" uid="e8f38b6a-7e81-486e-8371-389499db1ecb">
+                <NoteTypes>
+                    <NoteType name="by" label="by" is-hidden="false" uid="abd181e4-b743-44b3-81c7-76f4a9865b7a"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="right-outer-join" metaclass="ObjectFlow" is-hidden="false" label="right-outer-join" uid="f84f764f-4b73-4155-ab4a-84452421bd41">
+                <NoteTypes>
+                    <NoteType name="by" label="by" is-hidden="false" uid="93498aa6-785b-4687-a351-43f4f7040b80"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="limit" metaclass="OpaqueAction" is-hidden="false" label="limit" uid="b06b1d86-0a5d-4aca-bad2-1b8b41e6242c">
+                <TagTypes>
+                    <TagType name="limit" uid="7e84811f-6bb6-4091-a0f3-cc3bc39bd12e" label="limit" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="load" metaclass="ObjectNode" is-hidden="false" label="load" uid="7f7f9a1a-d03c-4be2-9f8d-f966ca58b613">
+                <TagTypes>
+                    <TagType name="data" uid="e431c668-6980-4b62-bf21-147b6e9d37f4" label="data" is-hidden="false"/>
+                    <TagType name="using" uid="daa3e580-2adf-4cc6-832b-907ec86470a8" label="using" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="map-reduce" metaclass="OpaqueAction" is-hidden="false" label="map-reduce" uid="cde7a372-a8cc-4595-8815-2efa4d0feedc">
+                <TagTypes>
+                    <TagType name="jar" uid="6a9fe21c-f005-4dcf-98e9-bdd097265417" label="jar" is-hidden="false"/>
+                    <TagType name="storeLocation" uid="bbdc1c4d-1cf1-41b3-8e31-7e5e279f4af0" label="storeLocation" is-hidden="false"/>
+                    <TagType name="storeFunc" uid="1b00a9b3-fb21-4e7b-8791-e9c8a5bf34c5" label="storeFunc" is-hidden="false"/>
+                    <TagType name="loadLocation" uid="9320d446-0d87-443f-8c12-92f343378a4f" label="loadLocation" is-hidden="false"/>
+                    <TagType name="loadFunc" uid="d006a0af-4816-4310-a04a-12c373f6f383" label="loadFunc" is-hidden="false"/>
+                    <TagType name="params" uid="1d28436b-3560-47e8-af71-00ff68044b04" label="params" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="order" metaclass="OpaqueAction" is-hidden="false" label="order" uid="29740cd4-bd24-42a8-9fb9-32f68c8f1d2e">
+                <TagTypes>
+                    <TagType name="parallel" uid="08bcbaa3-2190-4399-8e79-99cb9aa7cd52" label="parallel" is-hidden="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="by" label="by" is-hidden="false" uid="2a72d837-681b-41ce-9cc8-1e6994567130"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="sample" metaclass="OpaqueAction" is-hidden="false" label="sample" uid="dc9b0c1f-18a3-4e8b-9902-82917d0e1d71">
+                <TagTypes>
+                    <TagType name="size" uid="297fc2fd-fbfb-4276-bd73-abbea232ac00" label="size" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="split" metaclass="OpaqueAction" is-hidden="false" label="split" uid="8b9223b3-4625-4c96-8bbf-25d8c052125a"/>
+            <Stereotype name="splitCondition" metaclass="ObjectFlow" is-hidden="false" label="splitCondition" uid="1e453b5f-d571-4f40-8bc9-f4b3e1db2808">
+                <NoteTypes>
+                    <NoteType name="expression" label="expression" is-hidden="false" uid="d634bbaa-d69c-412e-b661-c61becf6ec6f"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="splitOtherwise" metaclass="ObjectFlow" is-hidden="false" label="splitOtherwise" uid="85c87166-7d64-4f5a-9f6e-4e028a3fbc49"/>
+            <Stereotype name="store" metaclass="OpaqueAction" is-hidden="false" label="store" uid="bbbe88f3-09be-47df-a300-e09576b66a28">
+                <TagTypes>
+                    <TagType name="location" uid="48b2e3a3-1dc0-4b72-bd78-8985d0c05177" label="location" is-hidden="false"/>
+                    <TagType name="function" uid="bf252c3f-cfd3-497a-ab25-14ed545db4a0" label="function" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="stream" metaclass="OpaqueAction" is-hidden="false" label="stream" uid="375b534d-7886-4331-9ddc-c17c6a7e2209">
+                <TagTypes>
+                    <TagType name="through" uid="aaff3425-0abe-413f-b1db-6c013cc599ba" label="through" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="union" metaclass="OpaqueAction" is-hidden="false" label="union" uid="b8d04e60-52db-4add-90d7-2005ba2d7636">
+                <TagTypes>
+                    <TagType name="onSchema" uid="50bfd52b-7cea-473a-b1d8-4a93586be36f" label="onSchema" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="update" metaclass="OpaqueAction" is-hidden="false" label="update" uid="706d9a91-0c3d-48a2-af62-8be67f110647">
+                <NoteTypes>
+                    <NoteType name="expression" label="expression" is-hidden="false" uid="4dc29042-8394-45d4-8a51-990d98f51c83"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="append" metaclass="OpaqueAction" is-hidden="false" label="append" uid="98e22d49-f08d-4a91-8469-b7fe8c66f0da"/>
+        </Profile>
+        <Profile uid="dd60aed7-cb98-4ba0-9c78-f28a84e10c52" id="RTSJ">
+            <Stereotype name="realtime" metaclass="ActivityNode" is-hidden="false" label="realtime" uid="54d47a0e-90eb-4ccb-81c4-0667b9c41ebf"/>
+            <Stereotype name="noHeap" metaclass="ActivityNode" is-hidden="false" label="noHeap" uid="c22206d8-8465-4e4c-9ead-feffc653ff02"/>
+            <Stereotype name="priority" metaclass="Dependency" is-hidden="false" label="priority" uid="764442df-8383-4977-bf98-07ae79b1e30b"/>
+            <Stereotype name="heap" metaclass="ObjectNode" is-hidden="false" label="heap" uid="88471f56-c6d8-4c45-9beb-9a660169a6c8"/>
+            <Stereotype name="immortal" metaclass="ObjectNode" is-hidden="false" label="immortal" uid="907e91a0-739a-4d3f-b3b0-9cbe51c4efe5"/>
+            <Stereotype name="physical" metaclass="ObjectNode" is-hidden="false" label="physical" uid="643ec5d2-0faf-43d1-aa76-b58aeddba670">
+                <TagTypes>
+                    <TagType name="base" uid="938a2655-9cd1-4bcf-8890-93c8f24e44c3" label="base" is-hidden="false"/>
+                    <TagType name="size" uid="084bda8d-7ece-48a5-8a14-9a875b882654" label="size" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="allocated" metaclass="ObjectNode" is-hidden="false" label="allocated" uid="402d6a28-f21a-478e-b905-485cdc78fbcc">
+                <TagTypes>
+                    <TagType name="initialSize" uid="9c10f448-e511-4a98-943b-ab8e9e53712c" label="initialSize" is-hidden="false"/>
+                    <TagType name="maxSize" uid="df946d65-b6ce-4732-a77e-646ed40d7471" label="maxSize" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="scoped" metaclass="ObjectNode" is-hidden="false" label="scoped" uid="d2ee474e-41d0-41a5-9d24-7d1a982f7559">
+                <TagTypes>
+                    <TagType name="linearTimeAllocation" uid="23d4c80b-c872-4b53-ad13-4896bd354551" label="linearTimeAllocation" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="asyncEvent" metaclass="ModelElement" is-hidden="false" label="asyncEvent" uid="869009f2-95a8-4033-b62f-5e4b1a83df4d">
+                <TagTypes>
+                    <TagType name="bindTo" uid="f7b797c2-6e69-412e-9d04-0a389aad07fd" label="bindTo" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="timer" metaclass="ModelElement" is-hidden="false" label="timer" uid="501b0e85-a85a-41b8-bcbf-b1e6128d875f">
+                <TagTypes>
+                    <TagType name="time" uid="440bda15-9fac-4c7a-a331-5f3236489c54" label="time" is-hidden="false"/>
+                    <TagType name="clock" uid="e4ae22ae-732a-4d8a-9314-1dc40e2f5653" label="clock" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="aperiodic" metaclass="ModelElement" is-hidden="false" label="aperiodic" uid="8ff921e3-73cb-4c74-9a77-807d158ad231">
+                <TagTypes>
+                    <TagType name="cost" uid="c4b86bff-7010-4305-831b-4ff256334ad2" label="cost" is-hidden="false"/>
+                    <TagType name="deadline" uid="366e4c82-1338-4af9-9118-6a7bab84a65f" label="deadline" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="periodic" metaclass="ModelElement" is-hidden="false" label="periodic" uid="c76615ae-616c-4325-afe7-e2f150447572">
+                <TagTypes>
+                    <TagType name="start" uid="b1dcb9eb-d578-44c6-ab0f-3b2250d1e565" label="start" is-hidden="false"/>
+                    <TagType name="interval" uid="f011de86-176b-4509-b41b-6a4689a48db5" label="interval" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="sporadic" metaclass="ModelElement" is-hidden="false" label="sporadic" uid="2b6cabe0-9562-46eb-9786-2a9664530dd0">
+                <TagTypes>
+                    <TagType name="interarrival" uid="f1e7c44e-d024-472e-a78b-9e9ed402461d" label="interarrival" is-hidden="false"/>
+                    <TagType name="cost" uid="28a2692c-e9e7-4d7d-a33a-d905d1c192d8" label="cost" is-hidden="false"/>
+                    <TagType name="deadline" uid="cba9d83a-cb03-4eea-bf91-0bb320b49d88" label="deadline" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="overrunHandler" metaclass="ExceptionHandler" is-hidden="false" label="overrunHandler" uid="0ac3cee6-bf66-4f1e-893c-9b4e52b7b56f"/>
+            <Stereotype name="missHandler" metaclass="ExceptionHandler" is-hidden="false" label="missHandler" uid="dd84370c-88d2-42c9-badf-58dab931b113"/>
+            <Stereotype name="period" metaclass="AcceptTimeEventAction" is-hidden="false" label="period" uid="fd1a6e45-055c-44d4-82cb-a0d6f753917d"/>
+        </Profile>
+        <Profile uid="115648a4-fcc7-469e-a343-76baf0bee978" id="JUNIPER Programming Model">
+            <Stereotype name="HardwarePlatformModel" metaclass="Package" is-hidden="false" label="HardwarePlatformModel" uid="d77162fc-1a27-4abc-b532-751bb35d6a6a">
+                <Icon path="res/icons/bdata_system.png"/>
+            </Stereotype>
+            <Stereotype name="ProgramInstance" metaclass="BindableInstance" is-hidden="false" label="ProgramInstance" uid="f3993ae4-ecd0-481b-8934-784a0a146cb0">
+                <Icon path="res/icons/HwComponent_kindPort_bindableinstance.png"/>
+                <Image path="res/icons/HwComponent_kindPort_bindableinstance_32x32.png"/>
+            </Stereotype>
+            <Stereotype name="SoftwareArchitectureModel" metaclass="Package" is-hidden="false" label="SoftwareArchitectureModel" uid="3bfd99e9-775c-4baa-81c5-10edaef4e37a">
+                <Icon path="res/icons/juniper_model.png"/>
+                <TagTypes>
+                    <TagType name="libraries" uid="cf4bc99a-8066-480c-ba6c-575fde8fb0a5" label="Classpath" parameter-card="*" is-hidden="false"/>
+                    <TagType name="libfolder" uid="159fc5e7-e563-4550-99e4-4e5c180ee0c8" label="Default libraries folder" parameter-card="1" is-hidden="false"/>
+                    <TagType name="javacmdline" uid="d909aa68-a4a4-4e73-a004-0c1f023c2df6" label="JAVA command line switches" parameter-card="*" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="JUNIPERProgram" metaclass="Class" is-hidden="false" label="JUNIPERProgram" uid="b08729f4-9b26-497e-8f5a-90286a2ea807">
+                <Icon path="res/icons/HwComponent_kindPort_class.png"/>
+                <Image path="res/icons/HwComponent_kindPort_class_32x32.png"/>
+            </Stereotype>
+            <Stereotype name="SwMutualExclusionResource" metaclass="ModelElement" is-hidden="false" label="SwMutualExclusionResource" uid="bfd4f620-4e58-4718-b41d-722cbb888851">
+                <Icon path="res/icons/System16.png"/>
+                <Image path="res/icons/System32.png"/>
+            </Stereotype>
+            <Stereotype name="Channel" metaclass="Port" is-hidden="false" label="Channel" uid="fbfa0fab-93bf-4253-adf6-792658d60e75">
+                <Icon path="res/icons/CommunicationResource16.png"/>
+                <Image path="res/icons/CommunicationResource16.png"/>
+            </Stereotype>
+            <Stereotype name="RequestResponseStream" metaclass="Port" is-hidden="false" label="RequestResponseStream" uid="0b32315c-7307-43d7-9671-e1ce4c71fe6d">
+                <Icon path="res/icons/RequestResponseStream16.png"/>
+                <Image path="res/icons/RequestResponseStream16.png"/>
+                <TagTypes>
+                    <TagType name="requiresResponse" uid="3527fa83-c663-42c3-95f0-26d00d3ff3a9" label="requiresResponse" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="CloudNode" metaclass="Instance" is-hidden="false" label="CloudNode" uid="61dd8e60-6b9b-4744-b0e3-8c22dc14ae0b">
+                <Icon path="res/icons/Server16.png"/>
+                <Image path="res/icons/Server32.png"/>
+                <TagTypes>
+                    <TagType name="ip" uid="4cb385c3-992f-4733-9bb5-8127970afcd4" label="ip" parameter-card="*" is-hidden="false"/>
+                    <TagType name="hwClass" uid="59916dc0-88d9-4f7c-ac00-2e66f0517d2e" label="hwClass" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="CloudDisk" metaclass="BindableInstance" is-hidden="false" label="CloudDisk" uid="99a67a52-6dcd-423b-bdb6-488273e3eebc">
+                <Icon path="res/icons/Image16.png"/>
+                <Image path="res/icons/Image48.png"/>
+            </Stereotype>
+            <Stereotype name="CloudNodeCPU" metaclass="BindableInstance" is-hidden="false" label="CloudNodeCPU" uid="813fdc87-b36e-4336-8e26-ffb8d251bcb9">
+                <Icon path="res/icons/Router16.png"/>
+                <Image path="res/icons/Router32.png"/>
+            </Stereotype>
+            <Stereotype name="JUNIPERStorageProgram" metaclass="Class" is-hidden="false" label="JUNIPERStorageProgram" uid="8a364d15-dc5c-468e-a45f-43eddf7ab4cf">
+                <Icon path="res/icons/HwComponent_kindPort_node.png"/>
+                <Image path="res/icons/HwComponent_kindPort_node_32x32.png"/>
+                <TagTypes>
+                    <TagType name="wrapperClass" uid="4cad0549-1780-46bb-9e05-67b5fa816f39" label="wrapperClass" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+        </Profile>
+        <Profile uid="c2d62072-e1ff-449f-bd50-72f85ce3d4e4" id="Scheduling Advices">
+            <Stereotype name="Attachment" metaclass="Element" is-hidden="false" label="Attachment" uid="4688a3f2-e44a-4382-a575-89392bff7d7d">
+                <Icon path="res/icons/ResourceType16.png"/>
+                <Image path="res/icons/ResourceType_32x32.png"/>
+                <TagTypes>
+                    <TagType name="id" uid="1124235e-983d-46fc-9b49-2a4b4d339094" label="id" is-hidden="false"/>
+                    <TagType name="contentType" uid="582a6b38-9f6e-41d7-aa9a-21586ffbb419" label="contentType" is-hidden="false"/>
+                    <TagType name="filename" uid="9b702d8a-871e-480a-abe1-a9439edf5a75" label="filename" is-hidden="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="content" label="content" is-hidden="false" uid="48f86639-91fc-42f2-a8de-0bca727d6a41"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="Advice" metaclass="Element" is-hidden="false" label="Advice" uid="9af30ebc-450d-42ac-a418-13e8e5914b8a">
+                <Icon path="res/icons/serviceContract.png"/>
+                <Image path="res/icons/serviceContract_32x32.png"/>
+                <TagTypes>
+                    <TagType name="category" uid="aa29c912-8893-4376-b9af-82189027e05e" label="category" is-hidden="false"/>
+                    <TagType name="severity" uid="55990b51-429a-4f32-8db0-824fc584d299" label="severity" is-hidden="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="originalXML" label="originalXML" is-hidden="false" uid="71214623-6921-4af0-a84a-686a821a84ab"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="ObjectReference" metaclass="Dependency" is-hidden="false" label="ObjectReference" uid="cb128ca4-4b9e-48a9-b7e0-4875f08f6966">
+                <TagTypes>
+                    <TagType name="objAttId" uid="c9bbecf5-2956-43d0-9a51-863bdfc1724e" label="objAttId" is-hidden="false"/>
+                    <TagType name="objId" uid="ff4fea20-a4a7-41bf-9887-5b35d1b64d5e" label="objId" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="AttachmentReference" metaclass="Dependency" is-hidden="false" label="AttachmentReference" uid="979893f9-7606-4962-840a-9a502aa7b1e5">
+                <TagTypes>
+                    <TagType name="attId" uid="3e2baf01-0976-43b3-a49e-633b078af0b3" label="attId" is-hidden="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="AdvicesPackage" metaclass="Package" is-hidden="false" label="AdvicesPackage" uid="9f38ec1a-d5e8-42aa-9938-3475623dfbc2">
+                <Icon path="res/icons/view.png"/>
+            </Stereotype>
+        </Profile>
+        <Profile uid="519f4f63-756c-4f3d-b577-a99a72498876" id="Selective MPI serialization">
+            <Stereotype name="includes" metaclass="Dependency" is-hidden="false" label="includes" uid="62fafdd3-9e11-4ce3-991f-a1839dfe735e"/>
+            <Stereotype name="excludes" metaclass="Dependency" is-hidden="false" label="excludes" uid="68f462e1-817c-4f75-839a-aa60d4414a98"/>
+        </Profile>
+        <Profile uid="736b163f-82f5-428e-a6d6-b47bdfb14a45" id="Big data modelling">
+            <Stereotype name="VerticalPartition" metaclass="Class" is-hidden="false" label="VerticalPartition" uid="ffe758bc-0e6a-4385-a585-ec2a1f10ec9d">
+                <Image path="res/icons/verticalPartition_48.png"/>
+            </Stereotype>
+            <Stereotype name="HorizontalPartitioning" metaclass="Attribute" is-hidden="false" label="HorizontalPartitioning" uid="96825a91-ff71-497c-aaac-3bae5453cb86">
+                <Image path="res/icons/horizontalPartition_48.png"/>
+            </Stereotype>
+            <Stereotype name="key" metaclass="Attribute" is-hidden="false" label="key" uid="fa951347-6383-420f-8947-6e6105940e11"/>
+            <Stereotype name="Stores" metaclass="Dependency" is-hidden="false" label="Stores" uid="a121f1ad-3727-473f-a15c-8ab952370e6d"/>
+        </Profile>
+        <Profile uid="5682f157-2fac-4bbd-b033-7daabb427ede" id="Advanced communcation modes">
+            <Stereotype name="symmetric " metaclass="Interface" is-hidden="false" label="symmetric " uid="1953207f-22c7-4229-9437-fe669ba1fcc3"/>
+            <Stereotype name="alltoone" metaclass="Interface" is-hidden="false" label="alltoone" uid="31b4807e-b6f9-4eca-8434-5073918c2598"/>
+            <Stereotype name="onetoall" metaclass="Interface" is-hidden="false" label="onetoall" uid="406802d0-ca92-4b3e-8a06-eaed8770f41e"/>
+            <Stereotype name="alltoall" metaclass="Interface" is-hidden="false" label="alltoall" uid="89485a06-cda5-432d-9882-9812e8708fe8"/>
+        </Profile>
+        <Profile uid="6c4be48d-e676-42e1-8ff4-645bd450e99a" id="Diagrams">
+            <Stereotype name="SoftwareArchitectureDiagram" metaclass="StaticDiagram" is-hidden="false" label="SoftwareArchitectureDiagram" uid="8940658b-ab7f-4a49-a135-a44117163f11">
+                <Icon path="res/icons/software_diagram.png"/>
+            </Stereotype>
+            <Stereotype name="BusinessObjectDiagram" metaclass="StaticDiagram" is-hidden="false" label="BusinessObjectDiagram" uid="d7ec5ace-dec4-4c61-a439-006a320cc88d">
+                <Icon path="res/icons/business_diagram_16.png"/>
+            </Stereotype>
+        </Profile>
+    </Profiles>
+    <Gui>
+        <Commands>
+            <Command id="Create Juniper model" label="Create Juniper model" tooltip="Create Juniper model" image="res/icons/juniper_icon_16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Package" stereotype="RootPackage"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="elementFactory"/>
+                    <HParameter name="name" value="JUNIPERApplication"/>
+                </Handler>
+            </Command>
+            <Command id="Create cloud node" label="Create cloud node" tooltip="Create cloud node" image="res/icons/Server16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Package" stereotype="HardwarePlatformModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="elementFactory"/>
+                    <HParameter name="name" value="Cloudnode"/>
+                </Handler>
+            </Command>
+            <Command id="Create CPU" label="Create CPU" tooltip="Create CPU" image="res/icons/Router16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Instance" stereotype="HwComputingResource_Instance"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="BindableInstance"/>
+                    <HParameter name="stereotypeModule" value="MARTEDesigner"/>
+                    <HParameter name="stereotype" value="HwProcessor_Instance"/>
+                    <HParameter name="addOp" value="Part"/>
+                </Handler>
+            </Command>
+            <Command id="Create cloud disk" label="Create cloud disk" tooltip="Create cloud disk" image="res/icons/Image16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Instance" stereotype="HwComputingResource_Instance"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="BindableInstance"/>
+                    <HParameter name="stereotypeModule" value="MARTEDesigner"/>
+                    <HParameter name="stereotype" value="HwDrive_Instance"/>
+                    <HParameter name="addOp" value="Part"/>
+                </Handler>
+            </Command>
+            <Command id="Create Juniper program instance" label="Create Juniper program instance" tooltip="Create Juniper program instance" image="res/icons/HwComponent_kindPort_bindableinstance.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Instance" stereotype="HwComputingResource_Instance"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="BindableInstance"/>
+                    <HParameter name="stereotypeModule" value="JuniperIDE"/>
+                    <HParameter name="stereotype" value="ProgramInstance"/>
+                    <HParameter name="addOp" value="Part"/>
+                </Handler>
+            </Command>
+            <Command id="Create non preemptive software region instance" label="Create non preemptive software region instance" tooltip="Create non preemptive software region instance" image="res/icons/System16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Instance" stereotype="HwComputingResource_Instance"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="BindableInstance"/>
+                    <HParameter name="stereotypeModule" value="JuniperIDE"/>
+                    <HParameter name="stereotype" value="SwMutualExclusionResource"/>
+                    <HParameter name="addOp" value="Part"/>
+                </Handler>
+            </Command>
+            <Command id="Create non preemptive software region" label="Create non preemptive software region" tooltip="Create non preemptive software region" image="res/icons/System16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Package" stereotype="SoftwareArchitectureModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotypeModule" value="JuniperIDE"/>
+                    <HParameter name="stereotype" value="SwMutualExclusionResource"/>
+                    <HParameter name="addOp" value=""/>
+                </Handler>
+            </Command>
+            <Command id="Create Juniper program" label="Create Juniper program" tooltip="Create Juniper program" image="res/icons/HwComponent_kindPort_class.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Package" stereotype="SoftwareArchitectureModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createJuniperProgram.py"/>
+                </Handler>
+            </Command>
+            <Command id="Create request/response stream" label="Create request/response stream" tooltip="Create request/response stream" image="res/icons/RequestResponseStream16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Class" stereotype="JUNIPERProgram"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="Port"/>
+                    <HParameter name="stereotypeModule" value="JuniperIDE"/>
+                    <HParameter name="stereotype" value="RequestResponseStream"/>
+                    <HParameter name="addOp" value="InternalStructure"/>
+                </Handler>
+            </Command>
+            <Command id="Create class" label="Create class" tooltip="Create class" image="res/icons/class.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Package" stereotype="SoftwareArchitectureModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotypeModule" value="JavaDesigner"/>
+                    <HParameter name="stereotype" value="JavaClass"/>
+                    <HParameter name="addOp" value=""/>
+                </Handler>
+            </Command>
+            <Command id="Create interface" label="Create interface" tooltip="Create interface" image="res/icons/interface.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Package" stereotype="SoftwareArchitectureModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="Interface"/>
+                    <HParameter name="stereotypeModule" value="JavaDesigner"/>
+                    <HParameter name="stereotype" value="JavaInterface"/>
+                    <HParameter name="addOp" value=""/>
+                </Handler>
+            </Command>
+            <Command id="Create attribute" label="Create attribute" tooltip="Create attribute" image="res/icons/attribute_property.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Class" stereotype="JavaClass"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="Attribute"/>
+                    <HParameter name="stereotypeModule" value="JavaDesigner"/>
+                    <HParameter name="stereotype" value="JavaAttributeProperty"/>
+                    <HParameter name="addOp" value="OwnedAttribute"/>
+                </Handler>
+            </Command>
+            <Command id="Create operation" label="Create operation" tooltip="Create operation" image="res/icons/operation.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Classifier"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="Operation"/>
+                    <HParameter name="stereotypeModule" value=""/>
+                    <HParameter name="stereotype" value=""/>
+                    <HParameter name="addOp" value="OwnedOperation"/>
+                </Handler>
+            </Command>
+            <Command id="Create parameter" label="Create parameter" tooltip="Create parameter" image="res/icons/parameter.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Operation"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="Parameter"/>
+                    <HParameter name="stereotypeModule" value=""/>
+                    <HParameter name="stereotype" value=""/>
+                    <HParameter name="addOp" value="IO"/>
+                </Handler>
+            </Command>
+            <Command id="Create return parameter" label="Create return parameter" tooltip="Create return parameter" image="res/icons/parameter.return.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Operation"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="Parameter"/>
+                    <HParameter name="stereotypeModule" value=""/>
+                    <HParameter name="stereotype" value=""/>
+                    <HParameter name="addOp" value="Return"/>
+                </Handler>
+            </Command>
+            <Command id="Create initial node" label="Create initial node" tooltip="Create initial node" image="res/icons/uml/InitialNode16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="ActivityPartition"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="InitialNode"/>
+                    <HParameter name="stereotypeModule" value=""/>
+                    <HParameter name="stereotype" value=""/>
+                    <HParameter name="addOp" value="ContainedNode"/>
+                </Handler>
+            </Command>
+            <Command id="Create final node" label="Create final node" tooltip="Create final node" image="res/icons/uml/ActivityFinalNode16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="ActivityPartition"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="ActivityFinalNode"/>
+                    <HParameter name="stereotypeModule" value=""/>
+                    <HParameter name="stereotype" value=""/>
+                    <HParameter name="addOp" value="ContainedNode"/>
+                </Handler>
+            </Command>
+            <Command id="Create partition" label="Create partition" tooltip="Create partition" image="res/icons/uml/ActivityPartition16.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="Activity"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="element"/>
+                    <HParameter name="metaclass" value="ActivityPartition"/>
+                    <HParameter name="stereotypeModule" value=""/>
+                    <HParameter name="stereotype" value=""/>
+                    <HParameter name="addOp" value="OwnedGroup"/>
+                </Handler>
+            </Command>
+            <Command id="Create chunk" label="Create chunk" tooltip="Create chunk" image="res/icons/activity.png" group="Elements" modify-model="true" group-image="res/icons/elements16.png">
+                <Scope metaclass="ActivityPartition"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createChunk.py"/>
+                </Handler>
+            </Command>
+            <Command id="Create Software diagram" label="Create Software platform diagram" tooltip="Create Software platform diagram" image="res/icons/software_diagram.png" group="Diagrams" modify-model="true" group-image="res/icons/diagrams_16.png">
+                <Scope metaclass="Package" stereotype="SoftwareArchitectureModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createSoftwareDiagram.py"/>
+                </Handler>
+            </Command>
+            <Command id="Create Business object diagram" label="Create Business object diagram" tooltip="Create Business object diagram" image="res/icons/business_diagram_16.png" group="Diagrams" modify-model="true" group-image="res/icons/diagrams_16.png">
+                <Scope metaclass="Package" stereotype="DataModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createBusinessDiagram.py"/>
+                </Handler>
+            </Command>
+            <Command id="Create Persistent diagram" label="Create Persistent diagram" tooltip="Create Persistent diagram" image="res/icons/PersistentDiagram16.png" group="Diagrams" modify-model="true" group-image="res/icons/diagrams_16.png">
+                <Scope metaclass="Package" stereotype="DataModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createPersistentDiagram.py"/>
+                </Handler>
+            </Command>
+            <Command id="Import advices..." label="Import advices..." tooltip="Import advices..." image="res/icons/serviceContract.png" group="Schedulling adviser" modify-model="true" group-image="res/icons/serviceContract.png">
+                <Scope metaclass="Package" stereotype="AdvicesPackage"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/importSchedulingAdvices.py"/>
+                </Handler>
+            </Command>
+            <Command id="Advice details..." label="Advice details..." tooltip="Advice details..." image="res/icons/serviceContract.png" group="Schedulling adviser" modify-model="false" group-image="res/icons/serviceContract.png">
+                <Scope metaclass="Element" stereotype="Advice"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/showAdvice.py"/>
+                </Handler>
+            </Command>
+            <Command id="Export XML model to scheduling advisor..." label="Export XML model to scheduling advisor..." tooltip="Export XML model to scheduling advisor..." image="res/icons/Alarm_association.png" group="Schedulling adviser" modify-model="false" group-image="res/icons/serviceContract.png">
+                <Scope metaclass="Package" stereotype="JUNIPERModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/exportXML.py"/>
+                </Handler>
+            </Command>
+            <Command id="Run schedullability analyser..." label="Run schedullability analyser..." tooltip="Run schedullability analyser..." image="res/icons/Alarm_association.png" group="Schedullability analyser" modify-model="false" group-image="res/icons/Alarm_association.png">
+                <Scope metaclass="Package" stereotype="JUNIPERModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="java"/>
+                    <HParameter name="command" value="org.modelio.juniper.ide.command.explorer.RunSchedulabilityAnalyser"/>
+                </Handler>
+            </Command>
+            <Command id="Generate behavior models from software model" label="Generate behavior models from software model" tooltip="Generate behavior models from software model" image="res/icons/activity.png" group="Model transformations" modify-model="true" group-image="res/icons/transformation16.png">
+                <Scope metaclass="Package" stereotype="JUNIPERModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/generateBehaviorModels.py"/>
+                </Handler>
+            </Command>
+            <Command id="Generate Hardware platform model from Software platform model" label="Generate Hardware platform model from Software platform model" tooltip="Generate Hardware platform model from Software platform model" image="res/icons/bdata_system.png" group="Model transformations" modify-model="true" group-image="res/icons/transformation16.png">
+                <Scope metaclass="Package" stereotype="JUNIPERModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/generateHwPlatform.py"/>
+                </Handler>
+            </Command>
+            <Command id="Generate code" label="Generate code" tooltip="Generate code" image="res/icons/generation.png" group="" modify-model="true" group-image="">
+                <Scope metaclass="Package" stereotype="JUNIPERModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="java"/>
+                    <HParameter name="command" value="org.modelio.juniper.ide.command.explorer.GenerateCodeCommand"/>
+                </Handler>
+            </Command>
+            <Command id="Validate model..." label="Validate model..." tooltip="Validate model..." image="res/icons/validate_16.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="Package" stereotype="JUNIPERModel"/>
+                <Handler class="org.modelio.juniper.ide.command.explorer.DefaultCommandHandler">
+                    <HParameter name="type" value="java"/>
+                    <HParameter name="command" value="org.modelio.modelvalidator.command.explorer.ValidateModelCommand"/>
+                </Handler>
+            </Command>
+        </Commands>
+        <Tools>
+            <Tool id="CreateJuniperProgramTool" label="Create Juniper program" tooltip="Create Juniper program" image="res/icons/HwComponent_kindPort_class.png">
+                <Handler class="org.modelio.juniper.ide.command.diagram.UnmaskPortTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="ownerStereotypeModule" value="JuniperIDE"/>
+                    <HParameter name="ownerStereotype" value="SoftwareArchitectureModel"/>
+                    <HParameter name="type" value="java"/>
+                    <HParameter name="command" value="org.modelio.juniper.ide.command.explorer.CreateJuniperProgramBoxTool"/>
+                </Handler>
+            </Tool>
+            <Tool id="ConnectJuniperProgramTool" label="Connect juniper programs" tooltip="Connect juniper programs" image="res/icons/generation.png">
+                <Scope-source metaclass="Port" stereotype="Channel"/>
+                <Scope-target metaclass="Port" stereotype="Channel"/>
+                <Handler class="org.modelio.juniper.ide.command.diagram.ConnectJuniperProgramsLinkTool">
+                    <HParameter name="metaclass" value="RequiredInterface"/>
+                    <HParameter name="scriptPath" value="/res/scripts/connectJuniperPrograms.py"/>
+                </Handler>
+            </Tool>
+            <Tool id="CreatePostgreSQLServerTool" label="Create PostgreSQL server" tooltip="Create PostgreSQL server" image="res/icons/postgresql_server.png">
+                <Scope-source metaclass="Package" stereotype="SoftwareArchitectureModel"/>
+                <Handler class="org.modelio.juniper.ide.command.diagram.UnmaskPortTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="ownerStereotypeModule" value="JuniperIDE"/>
+                    <HParameter name="ownerStereotype" value="SoftwareArchitectureModel"/>
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createPostgreSQLServer.py"/>
+                </Handler>
+            </Tool>
+            <Tool id="CreateMongoDBServerTool" label="Create MongoDB server" tooltip="Create MongoDB server" image="res/icons/mongodb_server.png">
+                <Scope-source metaclass="Package" stereotype="SoftwareArchitectureModel"/>
+                <Handler class="org.modelio.juniper.ide.command.diagram.UnmaskPortTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="ownerStereotypeModule" value="JuniperIDE"/>
+                    <HParameter name="ownerStereotype" value="SoftwareArchitectureModel"/>
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createMongoDBServer.py"/>
+                </Handler>
+            </Tool>
+            <Tool id="CreateStoresDependency" label="Create Stores dependency" tooltip="Create Stores dependency" image="res/icons/dependency.png">
+                <Scope-source metaclass="Class" stereotype="JUNIPERStorageProgram"/>
+                <Scope-target metaclass="Package" stereotype="DataModel"/>
+                <Handler class="org.modelio.juniper.ide.command.diagram.util.SimpleLinkTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="scriptPath" value="/res/scripts/createStoresDependency.py"/>
+                </Handler>
+            </Tool>
+            <Tool id="CreateVerticalPartitioning" label="Create Vertical partitioning" tooltip="Create Vertical partitioning" image="res/icons/verticalPartition_16.png">
+                <Scope-source metaclass="Package" stereotype="DataModel"/>
+                <Handler class="org.modelio.juniper.ide.command.diagram.util.SimpleBoxTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="ownerStereotypeModule" value="PersistentProfile"/>
+                    <HParameter name="ownerStereotype" value="DataModel"/>
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createVerticalPartitioning.py"/>
+                </Handler>
+            </Tool>
+            <Tool id="CreateHorizontalPartitioning" label="Create Horizontal partitioning" tooltip="Create Horizontal partitioning" image="res/icons/horizontalPartition_16.png">
+                <Scope-source metaclass="Class" stereotype="Entity"/>
+                <Handler class="org.modelio.juniper.ide.command.diagram.util.SimpleBoxTool">
+                    <HParameter name="metaclass" value="Attribute"/>
+                    <HParameter name="ownerStereotypeModule" value="PersistentProfile"/>
+                    <HParameter name="ownerStereotype" value="Entity"/>
+                    <HParameter name="type" value="script"/>
+                    <HParameter name="path" value="/res/scripts/createHorizontalPartitioning.py"/>
+                </Handler>
+            </Tool>
+        </Tools>
+        <ContextualMenu>
+            <CommandRef refid="Create Juniper model"/>
+            <CommandRef refid="Create cloud node"/>
+            <CommandRef refid="Create CPU"/>
+            <CommandRef refid="Create cloud disk"/>
+            <CommandRef refid="Create Juniper program instance"/>
+            <CommandRef refid="Create non preemptive software region instance"/>
+            <CommandRef refid="Create non preemptive software region"/>
+            <CommandRef refid="Create Juniper program"/>
+            <CommandRef refid="Create request/response stream"/>
+            <CommandRef refid="Create class"/>
+            <CommandRef refid="Create interface"/>
+            <CommandRef refid="Create attribute"/>
+            <CommandRef refid="Create operation"/>
+            <CommandRef refid="Create parameter"/>
+            <CommandRef refid="Create return parameter"/>
+            <CommandRef refid="Create initial node"/>
+            <CommandRef refid="Create final node"/>
+            <CommandRef refid="Create partition"/>
+            <CommandRef refid="Create chunk"/>
+            <CommandRef refid="Create Software diagram"/>
+            <CommandRef refid="Create Persistent diagram"/>
+            <CommandRef refid="Create Business object diagram"/>
+            <CommandRef refid="Import advices..."/>
+            <CommandRef refid="Advice details..."/>
+            <CommandRef refid="Export XML model to scheduling advisor..."/>
+            <CommandRef refid="Run schedullability analyser..."/>
+            <CommandRef refid="Generate behavior models from software model"/>
+            <CommandRef refid="Generate Hardware platform model from Software platform model"/>
+            <CommandRef refid="Generate code"/>
+            <CommandRef refid="Validate model..."/>
+        </ContextualMenu>
+        <Diagrams>
+            <DiagramType base-diagram="StaticDiagram" stereotype="SoftwareArchitectureDiagram">
+                <Palette keepBasePalette="true">
+                    <ToolRef refid="CreateJuniperProgramTool"/>
+                    <ToolRef refid="ConnectJuniperProgramTool"/>
+                    <ToolRef refid="CreatePostgreSQLServerTool"/>
+                    <ToolRef refid="CreateMongoDBServerTool"/>
+                    <ToolRef refid="CreateStoresDependency"/>
+                </Palette>
+                <Handler class="org.modelio.juniper.ide.command.diagram.util.JuniperDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="BusinessObjectDiagram">
+                <Palette keepBasePalette="true">
+                    <ToolRef refid="EntityDiagramCommande" group="Noeuds"/>
+                    <ToolRef refid="CreateVerticalPartitioning" group="Noeuds"/>
+                    <ToolRef refid="IdentifierDiagramCommande" group="Elements"/>
+                    <ToolRef refid="PersistentAttributeDiagramCommande" group="Elements"/>
+                    <ToolRef refid="SQLConstraintDiagramCommande" group="Elements"/>
+                    <ToolRef refid="CreateHorizontalPartitioning" group="Elements"/>
+                    <ToolRef refid="CREATE_ASSOCIATION" group="Links"/>
+                    <ToolRef refid="CREATE_COMPOSITION" group="Links"/>
+                    <ToolRef refid="CREATE_DEPENDENCY" group="Links"/>
+                    <ToolRef refid="ClassHierrarchyDiagramCommande" group="Links"/>
+                    <ToolRef refid="RelationshipDiagramCommande" group="Links"/>
+                </Palette>
+                <Handler class="StandardCustomizer"/>
+            </DiagramType>
+        </Diagrams>
+    </Gui>
+    <Dependencies>
+        <Required name="PersistentProfile" version="3.3.00.9023"/>
+        <Required name="MARTEDesigner" version="3.3.00.9023"/>
+        <Required name="JavaDesigner" version="3.3.00.9023"/>
+    </Dependencies>
+</Module>
